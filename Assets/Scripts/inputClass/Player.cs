@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         positionPlayer = transform.position;
         Mover();
 
-        if (Input.GetKey("a"))
+        if (Input.GetKey(KeyCode.Backspace))
         {
             Destroy(gameObject);
         }
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
 
     public void Mover()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal"); // a = -1  d = 1
+        float verticalInput = Input.GetAxis("Vertical");// w = -1  w = 1
         transform.Translate(new Vector3(horizontalInput, verticalInput,0) * sensibilidad);
 
     }
