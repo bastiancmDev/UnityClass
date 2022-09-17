@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class MovementPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private Vector3 positionPlayer;
     public Controls controlSystem;
     public Controls.MoveCubeActions moveCubeActions;
@@ -27,18 +26,22 @@ public class Player : MonoBehaviour
     }
 
 
-
-   
-
     public void Mover()
     {
-        
-        float moveX = moveCubeActions.Move.ReadValue<float>();
-        print(moveX);
-        float moveY = moveCubeActions.MoveY.ReadValue<float>();
-        print(moveY);
 
-        characterController.Move(new Vector3(moveX, moveY, 0));
+        float moveX = moveCubeActions.Move.ReadValue<float>();
+        //print(moveX);
+        float moveY = moveCubeActions.MoveY.ReadValue<float>();
+        //print(moveY);
+
+        characterController.Move(new Vector3(moveX, 0, moveY) * Time.deltaTime * sensibilidad);
 
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("<color=white>Error: </color>Entro a la collision de CharacterController");
+    }
+
+
 }

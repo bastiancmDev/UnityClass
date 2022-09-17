@@ -1,0 +1,98 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "MoveCube",
+            "id": "479655c8-bb70-4835-a9f7-d8867b28ad57",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "2b7819ba-a661-4d42-a0ef-7ce54b9796d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveY",
+                    "type": "Button",
+                    "id": "95f36a9c-5b77-49ae-878e-21e31deafadd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Y",
+                    "id": "d2e741b1-7c36-457e-be75-419dec8bb7c0",
+                    "path": "1DAxis",
+                    "interactions": "Press",
+                    "processors": "Normalize(min=-1,max=1)",
+                    "groups": "",
+                    "action": "MoveY",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "7a1e3dea-f411-43ec-9af4-e9003de80740",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b4df2d15-b57a-42dc-a56f-f920a51786b5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "X",
+                    "id": "3b028db3-f9c7-460f-b6b0-b1c84fe2b423",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "Press(pressPoint=1.401298E-45)",
+                    "processors": "Normalize(min=-1,max=1)",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6faf3b12-4464-4f43-9ff1-48fc089f6a8f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "25fb2945-ed03-4135-b80e-49c85d61443c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
