@@ -29,7 +29,9 @@ public class CollisionDetect : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        Debug.Log("<color=white>Error: </color>Entro a la collision");
+        if (collision.gameObject.tag != gameObject.tag) {
+            Debug.Log("<color=white>Error: </color>Entro a la collision");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,8 +39,5 @@ public class CollisionDetect : MonoBehaviour
         Debug.Log("<color=white>Error: </color>Entro a la Trigger");
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Debug.Log("<color=white>Error: </color>Entro a la collision de CharacterController in collision detect");
-    }
+    
 }

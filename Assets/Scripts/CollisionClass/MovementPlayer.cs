@@ -7,22 +7,30 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private Vector3 positionPlayer;
     public Controls controlSystem;
     public Controls.MoveCubeActions moveCubeActions;
-    public float sensibilidad;
-    public CharacterController characterController;
+    //public float sensibilidad;
+    public float speed;
+    public Rigidbody rb;
+    public Vector3 velocityTg;
+    public Vector3 velocityOfRb;
+    //public CharacterController characterController;
 
     void Start()
     {
+        
         controlSystem = new Controls();
         moveCubeActions = controlSystem.MoveCube;
         moveCubeActions.Enable();
-        characterController = gameObject.GetComponent<CharacterController>();
+        //characterController = gameObject.GetComponent<CharacterController>();
+        rb = gameObject.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Mover();
+        
+         velocityOfRb = rb.velocity;
+    
     }
 
 
@@ -34,14 +42,23 @@ public class MovementPlayer : MonoBehaviour
         float moveY = moveCubeActions.MoveY.ReadValue<float>();
         //print(moveY);
 
-        characterController.Move(new Vector3(moveX, 0, moveY) * Time.deltaTime * sensibilidad);
+        Vector3 targetVelocity = (new Vector3(moveX,0, moveY) * speed) ;
+        velocityTg = targetVelocity;
+        //targetVelocity = targetVelocity - rb.velocity;
+
+        //targetVelocity.y = 0;
+
+
+        rb.AddForce(targetVelocity, ForceMode.Impulse);
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    public void FixedUpdate()
     {
-        Debug.Log("<color=white>Error: </color>Entro a la collision de CharacterController");
+        Mover();
     }
+
+
 
 
 }

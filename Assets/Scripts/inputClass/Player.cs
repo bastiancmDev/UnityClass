@@ -9,36 +9,46 @@ public class Player : MonoBehaviour
     public Controls controlSystem;
     public Controls.MoveCubeActions moveCubeActions;
     public float sensibilidad;
-    public CharacterController characterController;
+    public Rigidbody rb;
+    public Game _game;
+    public float moveX, moveY;
 
     void Start()
     {
         controlSystem = new Controls();
         moveCubeActions = controlSystem.MoveCube;
         moveCubeActions.Enable();
-        characterController = gameObject.GetComponent<CharacterController>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Mover();
+        moveX = moveCubeActions.Move.ReadValue<float>();
+        //print(moveX);
+        moveY = moveCubeActions.MoveY.ReadValue<float>();
+        //print(moveY);
+        
     }
-
 
 
    
 
-    public void Mover()
+    private void OnCollisionEnter(Collision collision)
     {
         
-        float moveX = moveCubeActions.Move.ReadValue<float>();
-        print(moveX);
-        float moveY = moveCubeActions.MoveY.ReadValue<float>();
-        print(moveY);
+    }
 
-        characterController.Move(new Vector3(moveX, moveY, 0));
+    private void FixedUpdate()
+    {
+        Mover();
+    }
+
+    public void Mover()
+    {
+        Vector3 forceDirection = new Vector3(moveX, moveY, 0);
+        forceDirection = forceDirection * sensibilidad - rb.velocity;
+        rb.AddForce(forceDirection , ForceMode.VelocityChange);
 
     }
 }
