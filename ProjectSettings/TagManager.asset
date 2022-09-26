@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NoCollisionController
   - Enemy
+  - Floor
   layers:
   - Default
   - TransparentFX

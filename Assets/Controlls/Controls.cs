@@ -44,6 +44,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""55500885-836f-4849-bcff-d731d5f83497"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""770bf221-cba7-43d6-b76c-0738a9990501"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_MoveCube = asset.FindActionMap("MoveCube", throwIfNotFound: true);
         m_MoveCube_Move = m_MoveCube.FindAction("Move", throwIfNotFound: true);
         m_MoveCube_MoveY = m_MoveCube.FindAction("MoveY", throwIfNotFound: true);
+        m_MoveCube_Jump = m_MoveCube.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +204,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private IMoveCubeActions m_MoveCubeActionsCallbackInterface;
     private readonly InputAction m_MoveCube_Move;
     private readonly InputAction m_MoveCube_MoveY;
+    private readonly InputAction m_MoveCube_Jump;
     public struct MoveCubeActions
     {
         private @Controls m_Wrapper;
         public MoveCubeActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_MoveCube_Move;
         public InputAction @MoveY => m_Wrapper.m_MoveCube_MoveY;
+        public InputAction @Jump => m_Wrapper.m_MoveCube_Jump;
         public InputActionMap Get() { return m_Wrapper.m_MoveCube; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +227,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MoveY.started -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnMoveY;
                 @MoveY.performed -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnMoveY;
                 @MoveY.canceled -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnMoveY;
+                @Jump.started -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_MoveCubeActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,6 +240,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @MoveY.started += instance.OnMoveY;
                 @MoveY.performed += instance.OnMoveY;
                 @MoveY.canceled += instance.OnMoveY;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -222,5 +251,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }
