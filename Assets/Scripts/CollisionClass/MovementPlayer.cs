@@ -75,6 +75,10 @@ public class MovementPlayer : MonoBehaviour
             rb.AddForce(Vector3.up * speedJump, ForceMode.VelocityChange);
             jumpEnable = false;
         }
+        else
+        {
+            rb.AddForce(Vector3.up * 5 * -1, ForceMode.VelocityChange);
+        }
     }
 
 
