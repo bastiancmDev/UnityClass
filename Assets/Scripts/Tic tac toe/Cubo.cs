@@ -9,16 +9,19 @@ public class Cubo : MonoBehaviour
     public Table padre;
 
 
-    public void OnMouseDown()
-    {
-        padre.OnClickCubo(this);
-    }
 
     void Start()
     {
 
         padre = GameObject.Find("tablero").GetComponent<Table>();
     }
+
+    public void OnMouseDown()
+    {
+        padre.OnClickCubo(this);
+    }
+
+
 
 
     public void SetColor(Color color)
