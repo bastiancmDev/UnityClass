@@ -67,6 +67,12 @@ public class MovementPlayer : MonoBehaviour
     {
         Mover();
         JumpCh();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 200))
+            Debug.DrawLine(ray.origin, hit.point);
     }
 
 
@@ -77,7 +83,7 @@ public class MovementPlayer : MonoBehaviour
         }
         else
         {
-            rb.AddForce(Vector3.up * 5 * -1, ForceMode.VelocityChange);
+            //rb.AddForce(Vector3.up * 5 * -1, ForceMode.VelocityChange);
         }
     }
 
