@@ -37,4 +37,16 @@ public class CameraLoockControl : MonoBehaviour
         transform.Rotate(Vector3.up * (Xmouse * Time.deltaTime)* xSensi);
 
     }
+
+
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        if(Physics.Raycast(ray, out hit, 500))
+        {
+            Debug.DrawRay(cam.transform.position, ray.direction * hit.distance,Color.red);
+        }
+
+    }
 }

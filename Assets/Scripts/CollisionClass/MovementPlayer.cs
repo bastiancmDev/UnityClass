@@ -67,12 +67,19 @@ public class MovementPlayer : MonoBehaviour
     {
         Mover();
         JumpCh();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
+
+
+       
+
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 200))
-            Debug.DrawLine(ray.origin, hit.point);
+        if (Physics.Raycast(transform.position,transform.forward, out hit, 9000, LayerMask.GetMask("UI"))){
+
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+        }
+
+        
+        
     }
 
 
