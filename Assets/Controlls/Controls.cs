@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""248bf1fa-26a8-4397-85cf-93aafe58e1ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02478cbf-b005-476c-8475-e50d7950a2b5"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_MoveCube_Jump = m_MoveCube.FindAction("Jump", throwIfNotFound: true);
         m_MoveCube_CameraController = m_MoveCube.FindAction("CameraController", throwIfNotFound: true);
         m_MoveCube_Shot = m_MoveCube.FindAction("Shot", throwIfNotFound: true);
+        m_MoveCube_PauseGame = m_MoveCube.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_MoveCube_Jump;
     private readonly InputAction m_MoveCube_CameraController;
     private readonly InputAction m_MoveCube_Shot;
+    private readonly InputAction m_MoveCube_PauseGame;
     public struct MoveCubeActions
     {
         private @Controls m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_MoveCube_Jump;
         public InputAction @CameraController => m_Wrapper.m_MoveCube_CameraController;
         public InputAction @Shot => m_Wrapper.m_MoveCube_Shot;
+        public InputAction @PauseGame => m_Wrapper.m_MoveCube_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_MoveCube; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shot.started -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnShot;
                 @Shot.performed -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnShot;
                 @Shot.canceled -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnShot;
+                @PauseGame.started -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_MoveCubeActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_MoveCubeActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shot.started += instance.OnShot;
                 @Shot.performed += instance.OnShot;
                 @Shot.canceled += instance.OnShot;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnCameraController(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }

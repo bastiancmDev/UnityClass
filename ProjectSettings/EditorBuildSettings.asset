@@ -8,8 +8,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tic tac toe.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/CollisionClass.unity
+    guid: 4cedff9b36b3d3a459434e521977c151
+  - enabled: 1
+    path: Assets/Scenes/FallGuysLvl1.unity
+    guid: 3249f357dc7f47242adb785a9d306f4f
+  - enabled: 1
+    path: Assets/newAditiveScene.unity
+    guid: 1e83b2ed104e9ba469abe0dedf97c0ff
+  - enabled: 1
+    path: Assets/Scenes/AddTorque.unity
+    guid: 560d23670736bcb4d9f7aa609bad6756
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1e337844283a8e04e843accc6df8caf9, type: 2}
