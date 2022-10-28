@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
 public class MovementPlayer : MonoBehaviour
 {
     [SerializeField] private Vector3 positionPlayer;
@@ -124,6 +126,7 @@ public class MovementPlayer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         audioSource.Play();
+        
     }
 
 
