@@ -7,6 +7,8 @@ TagManager:
   - NoCollisionController
   - Enemy
   - Floor
+  - wall
+  - cameraPlayerSecond
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - walls
   - Water
   - UI
-  - 
+  - guns
   - 
   - 
   - 

@@ -1,0 +1,74 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww15180\viewh12980\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs30 \cf0 Lifecast Volumetric Video Player for Unity\
+
+\fs24 \
+Website: {\field{\*\fldinst{HYPERLINK "https://www.lifecastvr.com"}}{\fldrslt www.lifecastvr.com}}\
+Support email: support@lifecastvr.com\
+Video tutorial: {\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=9Ja20bitA-w&ab_channel=Lifecast"}}{\fldrslt https://www.youtube.com/watch?v=9Ja20bitA-w&ab_channel=Lifecast}}\
+\
+
+\f1\b Table of Contents
+\f0\b0 \
+1.		Overview\
+2.		Running the demo scene\
+3.		Changing the video source\
+4.		Player components details\
+\
+
+\f1\b 1. Overview
+\f0\b0 \
+
+\f1\b \
+
+\f0\b0 This package lets you capture and replay 3D volumetric video in Unity. The video is captured with any VR180 camera, and processed using Lifecast's software to extract depth information using machine learning. This makes it possible to capture volumetric videos in any environment, with 180 degree field of view, and high resolution depth maps (without the limitations of depth sensors). 
+\f1\b \
+\
+2. Running the demo scene
+\f0\b0 \
+\
+To run the demo scene, simply press play.\
+\
+
+\f1\b 3. Changing the video source\
+\
+
+\f0\b0 By default, the sample project loads a video file from the web. This video is generated using Lifecast's tool to convert any VR180 video into a volumetric format. To use your own videos or photos, download the Lifecast tool from {\field{\*\fldinst{HYPERLINK "http://www.lifecastvr.com"}}{\fldrslt www.lifecastvr.com}}, then follow the instructions at {\field{\*\fldinst{HYPERLINK "http://www.lifecastvr.com/tutorial.html"}}{\fldrslt www.lifecastvr.com/tutorial.html}} to encode the video file. Next, find the LifecastVideoPlayer in SampleScene, which contains a Unity Video Player. Change its Source to your own video.
+\f1\b \
+\
+4. Player components details
+\f0\b0 \
+\
+This section describes the components of the player in detail, and how they connect to each other.\
+\
+
+\f1\b Sample Scene\
+
+\f0\b0 \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\sl360\slmult1\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}Main Camera - This is the default Unity camera, with a script attached to control it called LifecastOrbitCamera. \
+{\listtext	\uc0\u8226 	}LifecastForegroundMesh - A procedurally generated mesh that renders the foreground of the scene.\
+{\listtext	\uc0\u8226 	}LifecastBackgroundMesh - A procedurally generated mesh that renders the background of the scene.\
+{\listtext	\uc0\u8226 	}LifecastVideoPlayer - A container for a Unity Video Player, which decodes a video into a Render Texture called LifecastVideoRenderTexture.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f1\b Assets\
+
+\f0\b0 \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\sl360\slmult1\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}LifecastOrbitCamera - A simple camera controller that lets the user rotate and pan with the mouse. You can use any other camera controls that you want.\
+{\listtext	\uc0\u8226 	}LifecastMeshGenerator - A script that generates vertex positions and texture coordinates. This is applied to LifecastForegroundMesh and LifecastBackgroundMesh at startup.\
+{\listtext	\uc0\u8226 	}LifecastVideoRenderTexture - A Unity Render Texture which is populated by LifecastVideoPlayer, and which is used as the texture for LifecastBackgroundMaterial and LifecastForegroundMaterial.\
+{\listtext	\uc0\u8226 	}LifecastBackgroundMaterial - The material for LifecastBackgroundMesh. Uses a shader named LifecastBackgroundShader. Uses LifecastVideoRenderTexture as its texture.\
+{\listtext	\uc0\u8226 	}LifecastForegroundMaterial - The material for LifecastForegroundMesh. Uses a shader named LifecastForegroundShader. Uses LifecastVideoRenderTexture as its texture.\
+{\listtext	\uc0\u8226 	}LifecastForegroundShader / LifecastBackgroundShader - the shaders in HLSL for the foreground and background materials.\
+}

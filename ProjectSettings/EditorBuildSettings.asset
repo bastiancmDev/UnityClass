@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Reflections.unity
+    guid: 731d3f5f7e505874ea4d85d0901a7a34
+  - enabled: 1
     path: Assets/Scenes/Tic tac toe.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
